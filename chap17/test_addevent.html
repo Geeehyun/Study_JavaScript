@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            width: 1000px;
+            margin: 20px auto;
+        }
+        #mainImeage{
+            width: 100%;
+        }
+        #mainImeage img {
+            width: 100%;
+        }
+        #imeageList {
+            display: flex;
+            justify-content: flex-start;
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        #imeageList img {
+            display: block;
+            width: 250px;
+            height: auto;
+            box-sizing: content-box;
+            border: none;
+        }
+        #buttonArea {
+            width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            position: absolute;
+            top: 500px;
+            z-index: 1;
+        }
+        #buttonArea button {
+            background-color: rgb(101, 188, 223);
+            border: 1px solid rgb(101, 188, 223);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            box-shadow: 3px 3px 3px #33333383;
+        }
+        #buttonArea button:first-child {
+            margin-left: -28px;
+        }
+        #buttonArea button:last-child {
+            margin-right: -28px;
+        }
+        #buttonArea button:hover {
+            background-color: #fff;
+            border-color: #fff;
+            color: rgb(101, 188, 223);
+        }
+        #page .target {
+            color: rgb(101, 188, 223);
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div id="imeageList">
+            <img src="/chap17/img/1.jpg" alt="이미지1">
+            <img src="/chap17/img/2.jpg" alt="이미지2">
+            <img src="/chap17/img/3.jpg" alt="이미지3">
+            <img src="/chap17/img/4.jpg" alt="이미지4">
+            <img src="/chap17/img/5.jpg" alt="이미지5">
+            <img src="/chap17/img/6.jpg" alt="이미지6">
+        </div>
+        <div id="mainImeage">
+            <img src="/chap17/img/1.jpg" alt="대표이미지">
+        </div>
+        <div id="buttonArea">
+            <button class="prev">◀</button>
+            <button class="next">▶</button>
+        </div>
+        <div id="page">
+        </div>
+    </section>
+
+    <script>
+        let main = document.querySelector('#mainImeage > img');
+        let imeageArea = document.querySelector('#imeageList');
+        let imeageList = document.querySelectorAll('#imeageList img');
+        let button = document.querySelectorAll('#buttonArea button');
+        let page = document.querySelector('#page');
+
+        for(let i = 0; i < imeageList.length; i++) {
+            imeageList[i].addEventListener('click',changeImeage);
+        }
+        document.onload = selectedImage();
+
+        // imeageList[0].addEventListener('click',changeImeage);
+        // imeageList[1].addEventListener('click',changeImeage);
+        // imeageList[2].addEventListener('click',changeImeage);
+        // imeageList[3].addEventListener('click',changeImeage);
+        // imeageList[4].addEventListener('click',changeImeage);
+
+        function changeImeage() {
+            let src = this.src;
+            main.setAttribute('src', src);
+            selectedImage();
+        }
+
+        for(let i = 0; i < button.length; i++) {
+            button[i].addEventListener('click',() => {prevNext(button[i].className)});
+            console.log(`${i} : ${button[i].className}`);
+        }
+
+        // button[0].addEventListener('click',() => { prevNext('prev')});
+        // button[1].addEventListener('click',() => { prevNext('next')});
+
+        function prevNext(step) {
+            let checkCurrent = main.src;
+            let targetNumber;
+            checkCurrent = checkCurrent.replace('http://127.0.0.1:5500/chap17/img/','');
+            checkCurrent = checkCurrent.replace('.jpg','');
+            checkCurrent = parseInt(checkCurrent);
+            if(step == 'prev') {
+             if(checkCurrent == 1) {
+                alert(`첫 페이지 입니다. \n마지막 페이지로 이동합니다.`);
+                targetNumber = imeageList.length;
+                main.src = 'http://127.0.0.1:5500/chap17/img/' + targetNumber + '.jpg';
+             } else {
+                targetNumber = checkCurrent - 1;
+                main.src = 'http://127.0.0.1:5500/chap17/img/' + targetNumber + '.jpg';
+             }
+            }
+            else if(step == 'next') {
+             if(checkCurrent == imeageList.length) {
+                alert(`마지막 페이지 입니다. \n첫 페이지로 이동합니다.`);
+                targetNumber = 1;
+                main.src = 'http://127.0.0.1:5500/chap17/img/' + targetNumber + '.jpg';
+             } else {
+                targetNumber = checkCurrent + 1;
+                main.src = 'http://127.0.0.1:5500/chap17/img/' + targetNumber + '.jpg';
+             }
+            }
+            selectedImage();
+        }
+        
+        function selectedImage() {
+            for(let i = 0; i < imeageList.length; i++){
+                if(main.src == imeageList[i].src) {
+                    imeageList[i].style.border = "8px solid rgb(101, 188, 223)";
+                    page.innerHTML = `<p><span class = "target">${i+1}</span> / ${imeageList.length}</p>`;
+                } else {
+                    imeageList[i].style.border = "none";
+                }
+            }
+            focusList();
+        }
+
+        function focusList() {
+            let checkCurrent = main.src;
+            checkCurrent = checkCurrent.replace('http://127.0.0.1:5500/chap17/img/','');
+            checkCurrent = checkCurrent.replace('.jpg','');
+            if(checkCurrent > parseInt((imeageList.length)/2+1)) {
+                imeageArea.style.justifyContent = "flex-end";
+            } else {
+                imeageArea.style.justifyContent = "flex-start";
+            }
+        }
+    </script>
+</body>
+</html>

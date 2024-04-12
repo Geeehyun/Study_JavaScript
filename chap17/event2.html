@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event2</title>
+</head>
+<body>
+    <h1>현재 시간 : </h1>
+    <div id="current">기본값</div>
+    <button class="textButton">innerText 바꾸기</button>
+    <button class="htmlButton">innerHTML 바꾸기</button>
+    <button class="resetButton">원래는 무슨값?</button>
+    <script>
+        let now = new Date();
+        let target = document.querySelector('#current');
+        let defaultValue = target.innerText;
+        let textButton = document.querySelector('.textButton');
+        let htmlButton = document.querySelector('.htmlButton');
+        let resetButton = document.querySelector('.resetButton');
+        
+
+        function textChange() {
+            target.innerText = now;
+        }
+
+        function htmlChange() {
+            target.innerHTML = `<span> 나는야 span 태그 지롱 ${now} </span>`;
+        }
+        function whatIsDefault() {
+            alert(defaultValue);
+        }
+
+        textButton.addEventListener("click",textChange);
+        htmlButton.addEventListener("click",htmlChange);
+        resetButton.addEventListener("click",whatIsDefault);
+    </script>
+</body>
+</html>

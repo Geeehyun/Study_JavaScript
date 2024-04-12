@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person = { name : "홍길동" };
+
+        let name = "기본 홍길동";
+        let copyName = name;
+        copyName = "변경된 고길동";
+
+        let copyPerson = person;
+        person.name = "고길동";
+        copyPerson.name = "장지현";
+
+        document.write(`name : ${name} <br>`);
+        document.write(`copyName : ${copyName} <br>`);
+        document.write(`person.name : ${person.name} <br>`);
+        document.write(`copyPerson.name : ${copyPerson.name} <br>`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="frm" id="frm" method="get">
+        <input type="text" name="name" id="name" placeholder="공백없이 입력해주세요" value="" maxlength="10">
+        <input type="submit" value="제출">
+    </form>
+
+    <script>
+        // let body = document.getElementsByTagName("body");
+        // document.write(body[0]);
+
+
+        let input = document.getElementById("frm");
+        //addEventListener 방법
+        input.addEventListener("submit", submitOk)
+
+        function submitOk() {
+            let value = this.name.value;
+            value = value.replaceAll(' ','');
+            if(value == null || value == ''){
+                alert(`입력값이 없습니다. 다시 입력해주세요`);
+            } else {
+                alert(`입력값 : ${value}\n정상처리되었습니다.`);    
+            }
+        }
+        
+    </script>
+</body>
+</html>

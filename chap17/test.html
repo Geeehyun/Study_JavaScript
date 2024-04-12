@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            width: 500px;
+            margin: 20px auto;
+        }
+        #mainImeage{
+            width: 500px;
+        }
+        #mainImeage img {
+            width: 100%;
+        }
+        #imeageList {
+            display: flex;
+        }
+        #imeageList img {
+            display: block;
+            width: 100px;
+        }
+        #buttonArea {
+            width: 500px;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+            position: absolute;
+            top: 170px;
+            z-index: 1;
+        }
+        #buttonArea button {
+            background-color: rgb(101, 188, 223);
+            border: 1px solid rgb(101, 188, 223);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            color: #fff;
+            box-shadow: 1px 1px 3px #33333383;
+        }
+        #buttonArea button:hover {
+            background-color: #fff;
+            border-color: #fff;
+            color: rgb(101, 188, 223);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div id="mainImeage">
+            <img src="/chap17/img/1.jpg" alt="대표이미지">
+        </div>
+        <div id="imeageList">
+            <img src="/chap17/img/1.jpg" alt="이미지1" onclick="changeImeage(this.src)">
+            <img src="/chap17/img/2.jpg" alt="이미지2" onclick="changeImeage(this.src)">
+            <img src="/chap17/img/3.jpg" alt="이미지3" onclick="changeImeage(this.src)">
+            <img src="/chap17/img/4.jpg" alt="이미지4" onclick="changeImeage(this.src)">
+            <img src="/chap17/img/5.jpg" alt="이미지5" onclick="changeImeage(this.src)">
+        </div>
+        <div id="buttonArea">
+            <button class="prev" onclick="prevNext('prev')">◀</button>
+            <button class="next" onclick="prevNext('next')">▶</button>
+        </div>
+    </section>
+
+    <script>
+        let main = document.querySelector('#mainImeage > img');
+
+        function changeImeage(src) {
+            // console.log(src);
+            main.setAttribute('src', src);
+        }
+
+        function prevNext(step) {
+            let checkCurrent = main.src;
+            let targetNumber;
+            checkCurrent = checkCurrent.replace('http://127.0.0.1:5500/chap17/img/','');
+            checkCurrent = checkCurrent.replace('.jpg','');
+            checkCurrent = parseInt(checkCurrent);
+            // console.log(checkCurrent);
+            if(step == 'prev') {
+             if(checkCurrent == 1) {
+                alert('첫번째 사진입니다.');
+             } else {
+                targetNumber = checkCurrent - 1;
+                main.src = 'http://127.0.0.1:5500/chap17/img/' + targetNumber + '.jpg';
+             }
+            }
+            else if(step == 'next') {
+             if(checkCurrent == 5) {
+                alert('마지막 사진입니다.');
+             } else {
+                targetNumber = checkCurrent + 1;
+                main.src = 'http://127.0.0.1:5500/chap17/img/' + targetNumber + '.jpg';
+             }
+            }
+        }
+    </script>
+</body>
+</html>

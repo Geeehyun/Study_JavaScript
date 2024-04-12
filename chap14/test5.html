@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function getRow() {
+            let value = prompt(`행 개수를 입력해주세요. \n예시 : 3`,'');
+            value = value.replaceAll(' ', '');
+            checkValue(value);
+            return value;
+        }
+        function getCol() {
+            let value = prompt(`열 개수를 입력해주세요. \n예시 : 3`,'');
+            value = value.replaceAll(' ', '');
+            checkValue(value);
+            return value;
+        }
+
+        function checkValue(value) {
+            if (value == undefined || value == null || value == '' ) {
+                alert('잘못입력하였습니다 \n다시 입력하세요.');
+                result = 0;
+            } else if (isNaN(value % 2)) {
+                alert('잘못입력하였습니다 \n다시 입력하세요.');
+                result = 0;
+            } else {
+                result = 1;
+            }
+        }
+
+        // let tableRow = '2 '; //test 변수입니다.
+        // let tableCol = '4 '; //test 변수입니다.
+        
+        function createTable(row, col) {
+            document.write(`<table>`);
+            for ( i= 1; i <= row; i++) {
+                document.write(`<tr>`);
+                for (j=1; j <= col; j++ ) {
+                    document.write(`<td>`);
+                    document.write(`${i} X ${j}`);
+                    document.write(`</td>`);
+                }
+                document.write(`</tr>`);
+            }
+            document.write(`</table>`);
+        }
+        let tableRow = 0;
+        let tableCol = 0;
+        let result = 0;
+        function run() {
+            while (result == 0) {
+                tableRow = getRow();
+                if(result == 1) {
+                    tableCol = getCol();
+                }
+                if(result == 1) {
+                    createTable(tableRow, tableCol);
+                }
+            }
+            
+        }
+
+        run();
+    </script>
+</body>
+</html>

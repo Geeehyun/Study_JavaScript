@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button</title>
+</head>
+<body>
+  <button data-cnt="10" data-name="가방명">가방</button>
+  <button data-cnt="20">신발</button>
+
+  <script>
+    const btns = document.querySelectorAll("button");
+    btns.forEach((e) => {
+      document.write(`cnt : ${e.dataset.cnt}<br> name : ${e.dataset.name} <br>`)
+    })
+  </script>
+</body>
+</html>

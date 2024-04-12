@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td {
+            border: 1px solid #000;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        td {
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function checkValue(value) {
+            if (value == 0 || value == null || value == undefined) {
+                alert('잘못입력했습니다.');
+                result = 0;
+            } else if (value == '' || isNaN(value % 2)) {
+                alert('잘못입력했습니다.');
+                result = 0;
+            } else {
+                result = 1;
+            }
+        }
+        function getTotal() {
+            let value = prompt(`총 게시글 수를 입력하세요!`);
+            value = value.replaceAll(' ','');
+            checkValue(value);
+            return value;
+        }
+        function getColumn() {
+            let value = prompt(`열 개수를 입력하세요!`);
+            value = value.replaceAll(' ', '');
+            checkValue(value);
+            return value;
+        }
+        function getRow(col, total) {
+            if (total % col !== 0) {
+                return (total / col) + 1;
+            } else {
+                return total / col;
+            }
+        }
+
+        function createTable(row, col, cnt, total) {
+            document.write(`<table>`);
+            for (let i = 1; i <= row; i++) {
+                document.write(`<tr>`);
+                for (let j = 1; j <= col; j++) {
+                    document.write(`<td>`);
+                    if (cnt <= total) {
+                        document.write(`${cnt}`);
+                    } else {
+                        document.write(`&nbsp;`);
+                    }
+                    document.write(`</td>`);
+                    cnt++;
+                }
+                document.write(`</td>`);  
+            }
+            document.write(`</table>`);
+        }
+
+        let result = 0;
+        let total = 0;
+        let col = 0;
+        let row = 0;
+        let cnt = 1;
+        function run() {
+            while (result == 0) {
+                total = getTotal();
+                if(result == 1) { 
+                    col = getColumn();
+                }
+                if (result == 1) {
+                    row = getRow(col, total);
+                }
+                if (result == 1) {
+                    cnt = 1;
+                }
+                if(result == 1) { 
+                    createTable(row, col, cnt, total);
+                }
+            }
+        }
+
+        run();
+
+
+
+
+
+        // let total = prompt(`총 게시글 수를 입력하세요!`);
+        // let col = prompt(`열 개수를 입력하세요!`);
+        // let row = 0;
+        // if (total % col !== 0) {
+        //     row = (total / col) + 1;
+        // } else {
+        //     row = total / col;
+        // }
+        // //선생님 버전
+        // //let cnt = 1;
+
+        // document.write(`<table>`);
+        // for (let i = 1; i <= row; i++) {
+        //     document.write(`<tr>`);
+        //     for (let j = 1; j <= 7; j++) {
+        //         document.write(`<td>`);
+        //         //원래 지현 버전
+        //         if ((j+(7*(i-1))) <= total) {
+        //             document.write(`${j+(7*(i-1))}`);
+        //         } else {
+        //             document.write(`&nbsp;`);
+        //         }
+        //         document.write(`</td>`);
+
+        //         //선생님 버전
+        //         // if (cnt <= total) {
+        //         //     document.write(`${cnt}`);
+        //         // } else {
+        //         //     document.write(`&nbsp;`);
+        //         // }
+        //         // document.write(`</td>`);
+        //         // cnt++;
+        //     }
+        //     document.write(`</td>`);  
+        // }
+        // document.write(`</table>`);
+    </script>
+</body>
+</html>

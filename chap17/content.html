@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Modify</title>
+</head>
+<body>
+  <p id="textContent"></p>
+  <p id="innerText"></p>
+  <p id="innerHTML"></p>
+
+  <script>
+    let content = document.querySelector('#textContent');
+    let text = document.querySelector('#innerText');
+    let html = document.querySelector('#innerHTML');
+
+    content.textContent = `<strong>textContent</strong> 속성`;
+    text.innerText = `<strong>innerText</strong> 속성`;
+    html.innerHTML = `<strong>innerHTML</strong> 속성`; //태그까지 적용되야할때는 무조건 innerHTML로 작업해야함.
+
+    let msg = prompt(`하위의 텍스트를 바꾸시겠습니까?`);
+
+    text.innerText = msg;
+
+  </script>
+</body>
+</html>

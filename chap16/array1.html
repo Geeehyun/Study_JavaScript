@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+</head>
+<body>
+    <script>
+        let season = ["봄", "여름", "가을", "겨울"];
+        
+        for(let i = 0; i < season.length; i++) {
+            document.write(`${i+1}번째 계절 : ${season[i]}<br>`);
+        }
+
+        let cnt = 0;
+        while(true) {
+            if (cnt >= season.length) {break;}
+            document.write(`${cnt+1}번째 계절 : ${season[cnt]}<br>`);
+            cnt++;
+        }
+    </script>
+</body>
+</html>

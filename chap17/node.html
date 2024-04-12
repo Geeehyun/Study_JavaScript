@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node</title>
+</head>
+<body>
+  <p id="title">Hello, <span style=" display: none;">javascript</span></p>
+
+  <script>
+    let pTag = document.getElementById('title');
+    document.write(`textContent : ${pTag.textContent}<br>`); //자기 갖고있는, 태그 내 내용을 다 갖고옴 (몇개의 태그가 중첩되어있어도 다 갖고옴)
+    document.write(`innerText : ${pTag.innerText}<br>`); //자기가 자신의 내용만 갖고옴. (중첩된 내그들은 빼고 자기꺼만)
+    document.write(`innerHTML : ${pTag.innerHTML}<br>`); //자기가 갖고있는 요소를 태그째로 갖고옴 (속성값도 전부)
+  </script>
+</body>
+</html>

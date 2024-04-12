@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Node</title>
+</head>
+<body>
+  <script>
+    const addNode = document.createElement('a');
+    document.body.appendChild(addNode);
+
+    const a = document.querySelector('a');
+
+    const textNode = document.createTextNode('텍스트노드 테스트 중입니다.');
+    a.appendChild(textNode);
+
+    const hrefAttr = document.createAttribute('href');
+    hrefAttr.value = 'https://www.naver.com';
+    a.setAttributeNode(hrefAttr);
+
+    const targetAttr = document.createAttribute('target');
+    targetAttr.value = '_black';
+    a.setAttributeNode(targetAttr);
+  </script>
+</body>
+</html>

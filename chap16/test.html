@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <script>
+        let num = ["one", "two", "three", "four", "five"];
+        let length = num.length;
+
+        // for 이용
+        document.write(`<h2> for문 </h2>`);
+        document.write(`<ul>`);
+        for(let i = 0; i < length; i++) {
+            document.write(`<li> ${num[i]} </li>`);
+        }
+        document.write(`</ul>`);
+
+
+        // for~in 이용
+        document.write(`<h2> for~in문 </h2>`);
+        document.write(`<ul>`);
+        for(i in num) {
+            document.write(`<li> ${num[i]} </li>`);
+        }
+        document.write(`</ul>`);
+
+
+        // for~of 이용
+        document.write(`<h2> for~of문 </h2>`);
+        document.write(`<ul>`);
+        for(i of num) {
+            document.write(`<li> ${i} </li>`);
+        }
+        document.write(`</ul>`);
+
+        
+        // forEach 이용
+        document.write(`<h2> forEach문 </h2>`);
+        document.write(`<ul>`);
+        num.forEach((e)=> {
+            document.write(`<li>${e}</li>`);
+        })
+        document.write(`</ul>`);
+
+
+        // while 이용
+        document.write(`<h2> while문 </h2>`);
+        document.write(`<ul>`);
+        let cnt = 0;
+        while(cnt < length) {
+            document.write(`<li> ${num[cnt]} </li>`);
+            cnt++;
+        }
+        document.write(`</ul>`);
+    </script>
+</body>
+</html>

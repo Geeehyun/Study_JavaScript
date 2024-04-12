@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test3</title>
+</head>
+<body>
+    <script>
+        let colors = ['빨강', '파랑', '노랑', '보라', '초록'];
+        let colors2 = colors.slice(2);
+        let colors3 = colors.splice(2,3);
+        document.write('colors2 : ' + colors2 + '<br>');
+        document.write('colors3 : ' +colors3 + '<br>');
+
+
+        let person = {
+            name : {
+                firstName : '길동',
+                lastName : '홍'
+            },
+            likes : ["apple", "samsung"] ,
+            printHello : function() {
+                return "hello";
+            }
+        }
+
+        document.write(`<hr>`);
+
+        document.write(`이름은 : ${person.name.lastName + person.name.firstName} <br>`);
+        document.write(`냅다 name 출력 : ${person.name} <br>`);
+        document.write(`firstName은 : ${person.name.firstName} <br>`);
+        document.write(`likes은 : ${person.likes} <br>`);
+        document.write(`likes 중 apple : ${person.likes[0]} <br>`);
+        document.write(`likes 중 samsung : ${person.likes[1]} <br>`);
+        document.write(`함수 냅다 출력 : ${person.printHello} <br>`);
+        document.write(`결과는 : ${person.printHello()} <br>`);
+
+
+        document.write(`<hr>`);
+        document.write(`이름은 : ${person["name"]["lastName"] + person["name"]["firstName"]} <br>`);
+        document.write(`냅다 name 출력 : ${person["name"]} <br>`);
+        document.write(`firstName은 : ${person["name"]["firstName"]} <br>`);
+        document.write(`likes은 : ${person["likes"]} <br>`);
+        document.write(`likes 중 apple : ${person["likes"][0]} <br>`);
+        document.write(`likes 중 samsung : ${person["likes"][1]} <br>`);
+        document.write(`함수 냅다 출력 : ${person["printHello"]} <br>`);
+        document.write(`결과는 : ${person["printHello"]()} <br>`);
+
+        document.write(`<hr>`);
+
+        let personTest = {}
+        personTest.name = {};
+        personTest.name.firstName = "길동";
+        personTest.name.lastName = "홍";
+        personTest.likes = ['apple', 'samsung'];
+        personTest.printHello = function() {
+            return "hello"
+        };
+
+        console.log(personTest)
+    </script>
+</body>
+</html>

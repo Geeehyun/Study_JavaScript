@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>romove child</title>
+</head>
+<body>
+  <p>Text 1</p>
+  <a href="https://www.naver.com">naver.com</a>
+  <a href="https://www.daum.net">daum.net</a>
+
+  <script>
+    // let pTag = document.querySelector('p');
+    // let pTagParent = pTag.parentNode;
+    // pTagParent.removeChild(pTag);s
+
+    const childNodes = document.body.childNodes;
+    childNodes.forEach((node) => {
+      if(node.nodeName === 'A') { //우리가 작업할때는 태그명으로 소문자로 작업하지만, 실제로는 대문자로 읽어옴 따라서 대문자로 해야 태그명 인식가능
+        node.parentNode.removeChild(node);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+</head>
+<body>
+  <form action="" name="frm" id="frm">
+    <input type="text" name="name" id="name" value="" placeholder="이름">
+    <input type="email" name="email" id="email" value="" placeholder="이메일">
+    <input type="submit" id="btnSubmit" value="확인">
+  </form>
+
+  <script>
+    let inputs = document.querySelectorAll('input');
+
+    for(let i = 0; i < inputs.length; i++){
+      inputs[i].addEventListener('keyup', (e)=>{
+        switch(e.keyCode) {
+          case 16: alert('shift 사용불가'); break; 
+          case 17: alert('ctrl 사용불가'); break; 
+          case 18: alert('alt 사용불가'); break; 
+        }
+      })
+    }
+  </script>
+</body>
+</html>

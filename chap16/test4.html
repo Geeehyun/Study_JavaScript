@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String test</title>
+</head>
+<body>
+    <script>
+        // let email = 'wkdwl578@naver.com';
+        let email = prompt(`이메일을 입력해주세요!`);
+
+        // console.log(email.includes('@'));
+        // console.log(email.includes('@','.'));
+        // console.log(email.includes('.'));
+        
+        if(email !== null && email !== undefined && email !== '') {
+            email = email.replaceAll(' ', '');
+            if(email.includes('@', '')) {
+                alert(`입력한 이메일 : ${email} \n이메일 확인되었습니다.`);     
+            } else {
+                alert(`입력한 이메일 : ${email} \n올바른 이메일 형식이 아닙니다.`);
+            }
+        } else {
+            alert(`잘못된 입력값입니다. 입력을 취소합니다.`);
+        }
+    </script> 
+</body>
+</html>

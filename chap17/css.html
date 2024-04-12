@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 속성</title>
+</head>
+<body>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div>
+
+    <script>
+        let div = document.getElementsByTagName("div");
+        div1.onclick = () => {
+            let color = div1.style.backgroundColor;
+            // div1.style.backgroundColor = "red";
+            // alert(color);
+            (color == '') ? div1.style.backgroundColor = "red" : div1.style.backgroundColor = null;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2</title>
+</head>
+<body>
+    <script>
+        let nums = [10, 20, 30];
+        let chars = ['s', 'p', 'a', 'c', 'e', '-', 'x'];
+        
+        // 1. 배열합치기
+        document.write(`<h2>1. 배열합치기</h2>`);
+        let newArr = nums.concat(chars);
+        let newArr2 = chars.concat(nums);
+        document.write(`nums+chars : ${newArr} <br>`);
+        document.write(`chars+nums : ${newArr2}`);
+        document.write(`<br><hr>`);
+
+        // 2. 배열 내의 요소 합치기 (문자열로 변환)
+        document.write(`<h2>2. 배열 내의 요소 합치기 (문자열로 변환)</h2>`);
+        let toStrNums = nums.join('');
+        let toStrChars = chars.join('');
+        document.write(`구분 기호 없음 : ${toStrNums} <br>`);
+        document.write(`구분 기호 없음 : ${toStrChars}`);
+        document.write(`<br>`);
+        let toStrNums2 = nums.join('|');
+        let toStrChars2 = chars.join('|');
+        document.write(`구분 기호 있음 : ${toStrNums2} <br>`);
+        document.write(`구분 기호 있음 : ${toStrChars2}`);
+        document.write(`<br><hr>`);
+        
+        // 3. 요소 추가
+        document.write(`<h2>3. 요소 추가</h2>`);
+        nums.unshift(0);
+        document.write(`요소 앞에 0추가 : ${nums} <br>`);
+        nums.push(90, 100);
+        document.write(`요소 뒤에 90, 100추가 : ${nums}`);
+        document.write(`<br><hr>`);
+
+        // 4. 요소추출
+        document.write(`<h2>4. 요소추출</h2>`);
+        let lastOne = nums.pop();
+        let firstOne = nums.shift();
+        document.write(`nums의 마지막 요소 : ${lastOne} <br>`);
+        document.write(`nums의 첫번째 요소 : ${firstOne} <br>`);
+        document.write(`추출 후 nums : ${nums} <br>`);
+
+        nums.unshift(lastOne);
+        nums.push(firstOne);
+        document.write(`추출한 값 자리 바꿔서 추가 nums : ${nums}`);
+    </script>
+</body>
+</html>

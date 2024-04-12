@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {padding: 0; padding: 0;}
+        body {text-align: center;}
+        div {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        h2, p {
+            border-radius: 50px;
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+        }
+        h2 {background-color: pink;}
+        p {background-color: rgb(247, 224, 227);}
+    </style>
+</head>
+<body>
+    <script>
+        // 익명함수
+        const gugudan = function(dan) {
+            document.write(`<div>`);
+            document.write(`<h2>${dan}단</h2>`);
+            for(let i = 1; i <= 9; i++) {
+                document.write(`<p>${dan} x ${i} = ${dan * i}</p>`);
+            }
+            document.write(`</div>`);
+        }
+        
+        //화살표함수
+        const gugudan2 = (dan) => {
+            document.write(`<div>`);
+            document.write(`<h2>${dan}단</h2>`);
+            for(let i = 1; i <= 9; i++) {
+                document.write(`<p>${dan} x ${i} = ${dan * i}</p>`);
+            }
+            document.write(`</div>`);
+        }
+
+        //실행해보자
+        let input = prompt("구구단을 계산할 숫자를 입력해주세요.");
+        gugudan(input);
+        gugudan2(input);
+
+    </script>
+</body>
+</html>

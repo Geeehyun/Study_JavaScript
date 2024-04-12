@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date test</title>
+    <style>
+        table, td, tr, th {
+            border: 1px solid #000;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+        .no-reading-day {
+            color: red;
+            font-weight: 800;
+        }
+
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const date1 = new Date('2024-01-01');
+        const date2 = new Date('2024-01-16');
+        let dateDiff = (date2 - date1) / (60 * 60 * 24 * 1000); 
+        //날짜는 기본적으로 유닉스 코드로 계산되기 때문에 해당 값을 변환해줘야하 함.
+
+        document.write('<h2>Date 매소드 이용하기</h2>');
+        document.write(dateDiff + '<br>');
+        document.write(`getTime1 : ${date1.getTime()}<br>`);
+        document.write(`getTime2 : ${date2.getTime()}<br>`);
+        document.write(`getDay : ${date1.getDay()}<br>`);
+        document.write(`getFullYear : ${date1.getFullYear()}<br>`);
+        document.write(`getMonth : ${date1.getMonth()}<br>`);
+        document.write(`getDay : ${date1.getDay()}<br>`);
+        document.write(`getHours : ${date1.getHours()}<br>`);
+        document.write(`getMinutes : ${date1.getMinutes()}<br>`);
+        document.write(`getSeconds : ${date1.getSeconds()}<br>`);
+        document.write(`getDate : ${date1.getDate()}<br>`);
+
+        document.write('<br><hr><br>');
+
+        let startDay = new Date('2023-12-24');
+        let today = new Date('2024-01-16');
+        let totalDay = (today - startDay) / (60 * 60 * 24 * 1000);
+        let col = 7;
+        let row; 
+        if ((totalDay % col) !== 0) {
+            row = parseInt(totalDay / col) + 1;
+        } else {
+            row = parseInt(totalDay / col);
+        }
+        let arrDays = ['2023-12-24', '2023-12-25', '2023-12-26', '2023-12-27', '2023-12-28', '2023-12-29', '2023-12-30', '2023-12-31', '2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05', '2024-01-06', '2024-01-07', '2024-01-08', '2024-01-09', '2024-01-10', '2024-01-11', '2024-01-12', '2024-01-13', '2024-01-14', '2024-01-15', '2024-01-16'];
+        let noReadingDays = ['2023-12-26','2023-12-29', '2024-01-02', '2024-01-04', '2024-01-08', '2024-01-10'];
+        let cnt = 0;
+        // console.log(days);
+
+        document.write('<h2>책 안읽은 날 표시하기</h2>');
+        document.write('<table>');
+        for(let i = 1; i <= row; i++) {
+            document.write('<tr>');
+            for(let j = 0; j < col; j++) {
+                if(cnt < (totalDay + 1)) {
+                    if (!noReadingDays.includes(arrDays[cnt])) {
+                        document.write(`<td>${arrDays[cnt]}</td>`);
+                    } else {
+                        document.write(`<td class = "no-reading-day">${arrDays[cnt]}</td>`);
+                    }
+                } else {
+                    document.write(`<td>&nbsp</td>`)
+                }
+                cnt ++;
+            }
+            document.write('<tr>');
+        }
+        document.write('</table>');
+
+
+        document.write('<br><hr><br>');
+        document.write('<h2>회원정보 표시하기</h2>');
+
+        let member = [ "홍길동1|24|남|학생|축구|서울시 강남구 논현동", "홍길동2|25|여|주부|농구|서울시 구로구 가산동", "홍길동3|26|남|회사원|골프|경기도 안양시 동안구", "홍길동4|27|여|교사|축구|경기도 수원시 장안구", "홍길동5|28|남|학생|야구|부산시 남영구 수영동", "홍길동6|29|여|회사원|수영|제주시 애월읍", "홍길동7|30|남|학생|야구|서울시 강남구 서초동", "홍길동8|31|여|트레이너|농구|대구시 북구", "홍길동9|32|남|운동선수|야구|부산시 수영구", "홍길동10|33|여|학생|축구|서울시 강남구 논현동" ];
+        let colName = ['이름', '나이', '성별', '직업', '취미', '지역'];
+        let memberCol = colName.length;
+        let memberRow = member.length;
+        let target = [];
+        let count = 0;
+        // console.log(`memverCol : ${memberCol}`);
+
+        document.write('<table>');
+        for(let i = 1; i <= memberRow; i++) {
+            document.write('<tr>');
+            for(let j = 0; j < memberCol && i == 1; j++) {
+                document.write('<th>');
+                document.write(colName[j]);
+                document.write('</th>');
+            }
+            document.write('</tr>');
+        }
+        for(let i = 1; i <= memberRow; i++) {
+            document.write('<tr>');
+            for(let j = 0; j < memberCol; j++) {
+                target = member[count].split('|');
+                // console.log(`${count} : ${target}`)
+                document.write('<td>');
+                document.write(`${target[j]}`);
+                document.write('</th>');
+            }
+            document.write('</tr>');
+            count++;
+        }
+        document.write('</table>');
+    </script>
+</body>
+</html>

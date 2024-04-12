@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS</title>
+  <style>
+    .red-color {color: red;}
+    .blue-color {color: blue;}
+    .font20 {font-size: 20px;}
+    .font40 {font-size: 40px;}
+  </style>
+</head>
+<body>
+  <!-- <p id="text" style="background-color: yellow; color: pink; font-size: 20px;">TEXT</p> -->
+  <p id="text">TEXT</p>
+
+  <script>
+    // let text = document.querySelector('#text');
+    // text.style.backgroundColor = '#fff0ff';
+    // text.style.fontSize = '25px';
+    // text.style.color = '#000';
+    // text.style.textAlign = 'center';
+
+    const text = document.querySelector('#text');
+    //text.classList.add('red-color', 'font20'); //class명 추가하는 법
+
+    text.addEventListener('mouseover',() => {text.classList.add('red-color', 'font20');})
+    text.addEventListener('mouseout',() => {text.classList.remove('font20');})
+  </script>
+</body>
+</html>

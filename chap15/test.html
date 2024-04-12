@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0;text-align: center;}
+        #container {
+            padding: 20px;
+        }
+        #navi ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        #navi ul li {
+            padding: 30px 10px;
+            border: 1px solid #222;
+            border-radius: 20px;
+            font-weight: 600;
+            background-color: #eee;
+        }
+        #navi ul li:hover {
+            text-decoration: underline;
+        }
+        #navi .yellow:hover {background-color: rgb(252, 252, 214);}
+        #navi .orange:hover {background-color: rgb(255, 198, 145);}
+        #navi .purple:hover {background-color: rgb(215, 193, 255);}
+        #navi .reset:hover {
+            background-color: rgb(85, 85, 85);
+            color: #fff;
+        }
+        .content {
+            margin-top: 10px;
+            border: 1px solid #222;
+            border-radius: 20px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <nav id="navi">
+            <ul>
+                <li class="yellow" onclick="changeBg('rgb(252, 252, 214)')">Yellow</li>
+                <li class="orange" onclick="changeBg('rgb(255, 198, 145)')">Orange</li>
+                <li class="purple" onclick="changeBg('rgb(215, 193, 255)')">Purple</li>
+                <li class="reset" onclick="changeBg('none')">초기화</li>
+            </ul>
+        </nav>
+        <div class="content"></div>
+    </div>
+    <script>
+        function changeBg(color) {
+            let target = document.querySelector('.content');
+            target.style.background = color;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select</title>
+</head>
+<body>
+  <form id="frm" action="">
+    <!-- <select name="option" id="option">
+      <option value="">선택</option>
+      <option value="apple">사과</option>
+      <option value="banana">바나나</option>
+      <option value="orange">오렌지</option>
+      <option value="melon">멜론</option> -->
+      <!--value값을 미지정시 작성한 텍스트 값이 넘어감.-->
+    <!-- </select> -->
+  </form>
+  <button id="frontRemove" type="button">앞에서부터 삭제</button>
+  <button id="backRemove" type="button">뒤에서부터 삭제</button>
+  <button id="selectRemove" type="button">선택된 내용 삭제</button>
+  <button id="inputRemove" type="button">입력한 내용 삭제</button>
+
+
+
+
+  <script>
+    // const options = document.querySelectorAll('option');
+    
+    // for(let i = 0; i < options.length; i++) {
+    //   if(options[i].value ===  'banana') {
+    //     options[i].selected = true;
+    //   }
+    // }
+
+    const fruit = ['선택','사과', '바나나', '오렌지', '멜론'];
+    const frm = document.querySelector('#frm');
+
+    const selEl = document.createElement('select');
+    const idAttr = document.createAttribute('id');
+    idAttr.value = 'select';
+    const nameAttr = document.createAttribute('name');
+    nameAttr.value = 'select';
+    selEl.setAttributeNode(idAttr);
+    selEl.setAttributeNode(nameAttr);
+    frm.appendChild(selEl);
+    
+    const selectBox = document.querySelector('#select');
+    let optEl;
+    let text;
+    let value;
+    //for 사용해보기
+    // for(let i = 0; i < fruit.length; i++){
+    //   optEl = document.createElement('option');
+    //   text = document.createTextNode(fruit[i]);
+    //   value = document.createAttribute('value');
+    //   value.value = fruit[i];
+    //   optEl.appendChild(text);
+    //   optEl.setAttributeNode(value);
+    //   selectBox.appendChild(optEl);
+    // }
+
+    //for in 사용해보기
+    // for(let idx in fruit) {
+    //   optEl = document.createElement('option');
+    //   text = document.createTextNode(fruit[idx]);
+    //   value = document.createAttribute('value');
+    //   value.value = fruit[idx];
+    //   optEl.appendChild(text);
+    //   optEl.setAttributeNode(value);
+    //   selectBox.appendChild(optEl);  
+    // }
+
+    //for of 사용해보기
+    // for(let element of fruit) {
+    //   optEl = document.createElement('option');
+    //   text = document.createTextNode(element);
+    //   value = document.createAttribute('value');
+    //   value.value = element;
+    //   optEl.appendChild(text);
+    //   optEl.setAttributeNode(value);
+    //   selectBox.appendChild(optEl);
+    // }
+
+    //forEach 사용해보기 (화살표함수)
+    // fruit.forEach((e)=>{
+    //   optEl = document.createElement('option');
+    //   text = document.createTextNode(e);
+    //   value = document.createAttribute('value');
+    //   value.value = e;
+    //   optEl.appendChild(text);
+    //   optEl.setAttributeNode(value);
+    //   selectBox.appendChild(optEl);
+    // })
+
+    //forEach 사용해보기 (익명함수)
+    // fruit.forEach(function(e){
+    //   optEl = document.createElement('option');
+    //   text = document.createTextNode(e);
+    //   value = document.createAttribute('value');
+    //   value.value = e;
+    //   optEl.appendChild(text);
+    //   optEl.setAttributeNode(value);
+    //   selectBox.appendChild(optEl);
+    // })
+
+
+    //createTextNode 이것도 optEl.value = 값; 이렇게 사용해도 됨.
+      fruit.forEach((e)=>{
+      optEl = document.createElement('option');
+      optEl.innerText = e;
+      value = document.createAttribute('value');
+      value.value = e;
+      optEl.setAttributeNode(value);
+      selectBox.appendChild(optEl);
+    })
+
+    let buttons = document.querySelectorAll('button');
+    let options;
+    let target;
+
+    for(let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', () => {remove(buttons[i].id);} )
+    }
+
+    function remove(side) {
+      options = document.querySelectorAll('option');
+      target = '';
+      // console.log(side);
+      if(options.length > 0) {
+        if(side == 'backRemove') {
+          target = options[options.length-1];
+          target.parentNode.removeChild(target);
+        } else if(side == 'frontRemove') {
+          target = options[0];
+          target.parentNode.removeChild(target);
+        } else if (side == 'selectRemove') {
+          options.forEach((e) => {
+            if(e.selected == true && e.value != '선택') {
+              console.log(`${e.value}가 선택됨.`);
+              target = e;
+              target.parentNode.removeChild(target);
+            }
+          })
+        } else if (side == 'inputRemove') {
+          let input = 'none';
+          do {
+            input = prompt('삭제할 값을 "정확히"입력해주세요');
+            if(input !== null && input !== undefined && input !== '선택')  {
+              input = input.replaceAll(' ', '');
+              options.forEach((e) => {
+                if(e.value == input) {
+                  target = e;
+                  console.log(target.value);
+                  return target;
+                }
+              })
+              if(target !== '') {
+                console.log(`${target}가 선택됨.`);
+                target.parentNode.removeChild(target);
+              } else if(target == '') {
+                alert('없는 값입니다.');
+                input = 'none';
+              }
+            } else if(input == undefined) {
+              alert('입력을 취소합니다.');
+              input = 'cacel';
+            } else if(input == '선택') {
+              alert('"선택"값은 삭제할 수 없습니다.')
+              input == 'none'
+            }
+          } while(input == 'none');
+        }
+      } else {
+        alert('삭제할 내용이 없습니다.');
+      }
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문</title>
+</head>
+<body>
+    <script>
+        //지현연습
+        let previous = ['', 0]
+        let no = '';
+
+        function getInput (prevalue) {
+            return prompt("숫자를 입력하시오", prevalue);
+        }
+
+        function removeEmpty (value) {
+            if (value !== null) {
+                value = value.replaceAll(' ', ''); 
+            }
+            return value;
+        }
+
+        function checkValue (value) {
+            if (value !== null && value !== undefined && value !== '' && !isNaN(value) && !isNaN(value % 2)) {
+                if (value % 2 == 0) {
+                    alert("2의 배수입니다.");
+                    return [value, 1];
+                } else {
+                    alert("2의 배수가 아닙니다.");
+                    return [value, 1];
+                }
+            } else {
+                if (value == null) {
+                    value = '';
+                }
+                alert("내용을 다시 입력해주세요.");
+                return [value, 0];
+            }
+        }
+
+        function run () {
+            while (previous[1] == 0) {
+                no = getInput(previous[0]);
+                no = removeEmpty(no);
+                previous = checkValue(no);
+            } 
+        }
+        
+        run();
+        
+    </script>
+</body>
+</html>

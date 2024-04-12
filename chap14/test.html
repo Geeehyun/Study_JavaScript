@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let even = 0;
+        let odd = 1;
+        for(let i = 1; i <= 10; i++) {
+            // if (i % 2 == 0) {
+            //     even += i; 
+            // } else {
+            //     odd *= i;
+            // }
+
+            //삼항연산자로 해보기
+            (i % 2 == 0) ? even += i : odd *= i;
+        }
+        document.write("<p>홀수 합은(*) " + odd + " 입니다.</p>");
+        document.write("<p>짝수 합은(+) " + even + " 입니다.</p>");
+
+        mong = 23;
+        console.log(mong);
+    </script>
+</body>
+</html>

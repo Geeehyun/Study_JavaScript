@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;}
+        .box {
+            border: 1px solid #555;
+            border-radius: 10px;
+            background: rgb(216, 216, 206);
+            margin-bottom: 15px !important;
+        }
+        #container {
+            display: grid;
+            grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+            gap: 20px;
+        }
+        body {
+            padding: 20px 10px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let goal = 9;
+        document.write(`<h1 class="box" style="text-align: center; width: 200px;margin: 0 auto;">구구단</h1>`);
+        document.write(`<div id="container">`)
+        for(let i = 2; i <= goal; i++){
+            document.write(`<div class="box" style="width: 100%; padding: 20px;box-sizing: border-box;">`);
+            document.write(`<h3 style="text-align: center;border-bottom:1px dashed #555;padding-bottom:10px">${i}단</h3><br>`);
+            for(let j = 1; j <= goal; j++){
+                document.write(`<p style="text-align:center;width: 100%;border-radius: 20px;background: #fff;padding: 10px 15px;box-sizing:border-box;">${i} X ${j} = ${i * j}</p><br>`);
+            }
+            document.write(`</div>`);
+        }
+        document.write(`</div>`)
+    </script>
+</body>
+</html>
